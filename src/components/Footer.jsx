@@ -37,8 +37,10 @@ const Footer = () => {
           <motion.div variants={itemVariants}>
             <div className="mb-6">
               <h2 className="text-2xl font-bold mb-4 flex items-center">
-                <span className="bg-[#f3eee5] text-[#251c1a] p-1 rounded mr-2">AI</span>
-                Legal Research
+                <div className="w-8 h-8 rounded-full bg-[#f3eee5] flex items-center justify-center mr-2">
+                  <FaGavel className="text-lg text-[#251c1a]" />
+                </div>
+                Lawgic
               </h2>
               <p className="text-[#f3eee5]/80 leading-relaxed">
                 Pioneering the future of legal research with advanced AI technology, 
@@ -85,7 +87,7 @@ const Footer = () => {
                   <span className="h-8 w-8 rounded bg-[#f3eee5]/10 flex items-center justify-center group-hover:bg-[#f3eee5]/20 transition-all duration-300">
                     <FaGavel className="text-[#f3eee5]" />
                   </span>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">Case Library</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Services</span>
                 </a>
               </li>
               <li>
@@ -135,12 +137,12 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:support@legalai.com" className="flex items-center space-x-3 group">
+                <a href="mailto:support@lawgic.com" className="flex items-center space-x-3 group">
                   <span className="h-10 w-10 rounded-full bg-[#f3eee5]/10 flex items-center justify-center group-hover:bg-[#f3eee5]/20 transition-all duration-300">
                     <FaEnvelope className="text-[#f3eee5]" />
                   </span>
                   <span className="text-[#f3eee5]/80 group-hover:text-[#f3eee5] transition-colors duration-300">
-                    support@legalai.com
+                    support@lawgic.com
                   </span>
                 </a>
               </li>
@@ -178,7 +180,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
             <div className="md:w-1/2">
-              <h3 className="text-xl font-semibold mb-2">Stay Updated with Legal AI</h3>
+              <h3 className="text-xl font-semibold mb-2">Stay Updated with Lawgic</h3>
               <p className="text-[#f3eee5]/70">Subscribe for the latest legal tech news and updates</p>
             </div>
             <div className="w-full md:w-1/2">
@@ -207,7 +209,7 @@ const Footer = () => {
               transition={{ delay: 0.5 }}
             >
               <p className="text-[#f3eee5]/70 text-sm">
-                &copy; {currentYear} Legal AI. All rights reserved.
+                &copy; {currentYear} Lawgic. All rights reserved.
               </p>
             </motion.div>
             <motion.div 

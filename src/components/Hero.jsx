@@ -17,7 +17,7 @@ function Hero() {
   }, []);
 
   return (
-    <div className="w-full h-[100vh] flex items-center justify-center" style={{ backgroundColor: '#f3eee5' }}>
+    <div className="w-full h-[100vh] flex items-center justify-center pt-20" style={{ backgroundColor: '#f3eee5' }}> {/* Added pt-20 for top padding */}
       <div className="container mx-auto max-w-7xl px-6 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left side with logo and text */}

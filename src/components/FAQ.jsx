@@ -3,33 +3,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa";
 
 const FAQ = () => {
-  const faqs = [
+  const faqs =[
     {
-      question: "What is this legal AI platform about?",
-      answer: "Our platform combines advanced artificial intelligence with comprehensive legal databases to provide powerful research tools for legal professionals, researchers, and organizations. We focus on making case law more accessible and insights more actionable."
+      "question": "What is Lawgic?",
+      "answer": "Lawgic is an AI-powered legal research platform designed to help users access past court judgments, understand legal precedents, and streamline case research. It offers AI-driven case matching, legal document summarization, and a user-driven discussion forum."
     },
     {
-      question: "How does AI enhance the legal research process?",
-      answer: "Our AI technology analyzes thousands of legal precedents, identifies patterns in judicial decisions, extracts key legal principles, and predicts case outcomes based on historical data. This significantly reduces research time and improves the quality of legal arguments."
+      "question": "How does Lawgic improve legal research?",
+      "answer": "Lawgic leverages AI and Natural Language Processing (NLP) to provide relevant case recommendations, summarize lengthy judgments, and categorize legal data efficiently, reducing research time and improving accessibility."
     },
     {
-      question: "What subscription plans are available?",
-      answer: "We offer tiered subscription options including a free basic plan with limited searches, a professional plan for individual practitioners, and enterprise solutions for law firms and organizations. Each tier provides increasing access to advanced features and historical case data."
+      "question": "Which courts and cases does Lawgic cover?",
+      "answer": "Lawgic focuses on Indian legal cases, including Supreme Court and High Court judgments. We continuously expand our database to ensure comprehensive legal research."
     },
+    
     {
-      question: "How accurate is the case prediction algorithm?",
-      answer: "Our case prediction algorithm has demonstrated over 85% accuracy in test environments across multiple practice areas. The system continually improves through machine learning as more data and outcomes are incorporated into our models."
-    },
-    {
-      question: "Can I integrate this platform with existing legal software?",
-      answer: "Yes, our platform offers API integration with major legal document management systems, practice management software, and citation tools. Our technical team provides support for custom integrations with proprietary systems."
-    },
-    {
-      question: "How is sensitive legal data protected?",
-      answer: "We implement bank-level encryption, strict access controls, and regular security audits. All user data is anonymized for analysis purposes, and we maintain compliance with legal industry data protection standards and regulations."
+      "question": "Is Lawgic free to use?",
+      "answer": "Lawgic offers a free basic version with essential search features. Advanced features like AI-driven insights, saved searches, and personalized recommendations may be available under premium plans."
     }
   ];
-
+  
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {

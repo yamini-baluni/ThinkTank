@@ -43,9 +43,10 @@ const Footer = () => {
                 Lawgic
               </h2>
               <p className="text-[#f3eee5]/80 leading-relaxed">
-                Pioneering the future of legal research with advanced AI technology, 
-                providing unparalleled access to case law and legal insights.
+               Revolutionizing legal research with AI-powered case analysis,  
+              smart document summarization, and data-driven legal insights.
               </p>
+
             </div>
             <div className="flex space-x-4 mt-6">
               <a href="#" className="h-10 w-10 rounded-full bg-[#f3eee5]/10 flex items-center justify-center hover:bg-[#f3eee5]/20 transition-all duration-300">
@@ -107,27 +108,32 @@ const Footer = () => {
               Our Services
             </h3>
             <ul className="space-y-3">
-              <li className="flex items-center space-x-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-                <span>AI-Powered Case Research</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-                <span>Legal Document Analysis</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-                <span>Precedent Identification</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-                <span>Case Law Database</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-                <span>Legal Analytics Dashboard</span>
-              </li>
-            </ul>
+  <li className="flex items-center space-x-2">
+    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+    <span>AI-Powered Case Search</span>
+  </li>
+  <li className="flex items-center space-x-2">
+    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+    <span>Legal Precedent Analysis</span>
+  </li>
+  <li className="flex items-center space-x-2">
+    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+    <span>Smart Document Summarization</span>
+  </li>
+  <li className="flex items-center space-x-2">
+    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+    <span>Data-Driven Legal Insights</span>
+  </li>
+  <li className="flex items-center space-x-2">
+    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+    <span>Community & Expert Discussions</span>
+  </li>
+  <li className="flex items-center space-x-2">
+    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+    <span>Multilingual Legal Research</span>
+  </li>
+</ul>
+
           </motion.div>
 
           {/* Contact Us */}
@@ -162,7 +168,7 @@ const Footer = () => {
                     <FaMapMarkerAlt className="text-[#f3eee5]" />
                   </span>
                   <span className="text-[#f3eee5]/80">
-                    123 Legal St, Law City
+                  Chitkara University, Punjab 147001
                   </span>
                 </div>
               </li>

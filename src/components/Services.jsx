@@ -4,43 +4,44 @@ import { FaBalanceScale, FaSearch, FaFileAlt, FaChartLine, FaUserTie, FaRegLight
 
 const Services = () => {
   const services = [
-    {
-      title: "Case Law Retrieval",
-      description: "Access a vast database of legal cases with advanced search filters and intelligent pattern recognition to find relevant precedents quickly.",
-      icon: <FaSearch className="text-4xl mb-4 text-[#f3eee5]/80" />,
-      features: ["5M+ indexed cases", "Advanced filters", "Citation tracking"]
-    },
-    {
-      title: "AI Legal Analysis",
-      description: "Leverage machine learning algorithms that analyze case patterns, precedent relevance, and predict potential legal outcomes with high accuracy.",
-      icon: <FaBalanceScale className="text-4xl mb-4 text-[#f3eee5]/80" />,
-      features: ["Outcome prediction", "Pattern recognition", "Jurisdictional insights"]
-    },
-    {
-      title: "Document Summarization",
-      description: "Transform lengthy legal documents into concise, actionable summaries highlighting key arguments, precedents, and conclusions.",
-      icon: <FaFileAlt className="text-4xl mb-4 text-[#f3eee5]/80" />,
-      features: ["Key point extraction", "Brief generation", "Citation linking"]
-    },
-    {
-      title: "Legal Analytics",
-      description: "Visualize case trends, judge tendencies, and legal argument effectiveness through comprehensive data analytics dashboards.",
-      icon: <FaChartLine className="text-4xl mb-4 text-[#f3eee5]/80" />,
-      features: ["Custom reports", "Visual dashboards", "Trend analysis"]
-    },
-    {
-      title: "Expert Network",
-      description: "Connect with specialized legal experts for consultation on complex matters requiring human expertise alongside AI-driven insights.",
-      icon: <FaUserTie className="text-4xl mb-4 text-[#f3eee5]/80" />,
-      features: ["Verified specialists", "Secure consultation", "Collaborative tools"]
-    },
-    {
-      title: "Legal Innovation Lab",
-      description: "Stay ahead with our continuous legal tech innovations, including predictive compliance tools and regulatory change monitoring.",
-      icon: <FaRegLightbulb className="text-4xl mb-4 text-[#f3eee5]/80" />,
-      features: ["Beta features", "Custom solutions", "API access"]
-    }
-  ];
+  {
+    title: "AI-Powered Case Search",
+    description: "Find relevant Indian legal cases instantly with AI-driven search, smart categorization, and precise precedent matching.",
+    icon: <FaSearch className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["Indian Supreme & High Court cases", "Advanced filters", "AI-powered case matching"]
+  },
+  {
+    title: "Legal Precedent Analysis",
+    description: "Understand judicial trends with AI-driven insights into case outcomes, precedent impact, and legal argument strength.",
+    icon: <FaBalanceScale className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["Case outcome predictions", "Precedent impact analysis", "Jurisdictional insights"]
+  },
+  {
+    title: "Smart Document Summarization",
+    description: "Convert lengthy legal texts into structured, digestible summaries highlighting key arguments and relevant citations.",
+    icon: <FaFileAlt className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["AI-generated summaries", "Key argument extraction", "Linked case citations"]
+  },
+  {
+    title: "Data-Driven Legal Insights",
+    description: "Analyze legal trends, judge decisions, and case success rates through interactive data visualization tools.",
+    icon: <FaChartLine className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["Judge ruling patterns", "Legal trend analysis", "Custom legal reports"]
+  },
+  {
+    title: "Community & Expert Discussions",
+    description: "Engage in discussions with legal professionals, share case experiences, and gain insights from industry experts.",
+    icon: <FaUserTie className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["Legal Q&A forum", "Case discussions", "Expert consultations"]
+  },
+  {
+    title: "Multilingual Legal Research",
+    description: "Access legal resources in multiple Indian languages, breaking language barriers for better understanding.",
+    icon: <FaRegLightbulb className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["English, Hindi & regional languages", "Legal term translations", "Localized case insights"]
+  }
+];
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -61,6 +62,13 @@ const Services = () => {
     }
   };
 
+  const handleSearchNowClick = () => {
+    const heroSection = document.querySelector('#home');
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="bg-[#251c1a] text-[#f3eee5] py-20 px-6 relative overflow-hidden">
       {/* Decorative elements */}
@@ -78,7 +86,7 @@ const Services = () => {
           <span className="bg-[#f3eee5]/10 text-[#f3eee5] px-4 py-1.5 rounded-full text-sm font-medium inline-block mb-5">
             Our Expertise
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Legal AI Services</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Lawgic Services</h2>
           <p className="text-lg text-[#f3eee5]/80 max-w-3xl mx-auto leading-relaxed">
             We combine cutting-edge AI technology with comprehensive legal databases to 
             revolutionize how professionals access, analyze, and leverage legal information.
@@ -148,12 +156,12 @@ const Services = () => {
           transition={{ delay: 0.4, duration: 0.7 }}
           className="mt-16 text-center"
         >
-          <a 
-            href="#" 
+          <button 
+            onClick={handleSearchNowClick}
             className="inline-block bg-[#f3eee5] text-[#251c1a] px-8 py-4 rounded-lg font-semibold hover:bg-[#f3eee5]/90 transition-colors duration-300"
           >
-            Schedule a Demo
-          </a>
+            Search Now~
+          </button>
           <p className="text-[#f3eee5]/60 mt-4 text-sm">
             See how our AI-powered platform can transform your legal research workflow
           </p>

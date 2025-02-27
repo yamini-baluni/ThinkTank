@@ -21,12 +21,20 @@ function Navbar() {
 
     // Navigation items
     const navItems = [
-        { name: 'Home', href: '#' },
-        { name: 'Services', href: '#services' },
+        { name: 'Home', href: '#home' },
         { name: 'About', href: '#about' },
+        { name: 'Services', href: '#services' },
         { name: 'FAQ', href: '#faq' },
         { name: 'Contact', href: '#contact' }
     ];
+
+    const handleNavClick = (href) => {
+        const element = document.querySelector(href);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            setMobileMenuOpen(false);
+        }
+    };
 
     return (
         <header 
@@ -55,7 +63,7 @@ function Navbar() {
                                     } transition-colors duration-300`} />
                                 </div>
                                 {scrolled ? 'Lawgic' : (
-                                    <span className="text-[#251c1a]">Lawgic</span>
+                                <span className="text-[#251c1a]">Lawgic</span>
                                 )}
                             </div>
                         </span>
@@ -67,6 +75,10 @@ function Navbar() {
                             <li key={index} className="hover:opacity-70 transition-opacity relative group">
                                 <a 
                                     href={item.href} 
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleNavClick(item.href);
+                                    }}
                                     className={`py-2 ${scrolled ? 'text-[#f3eee5]' : 'text-[#251c1a]'} transition-colors duration-300`}
                                 >
                                     {item.name}
@@ -115,8 +127,11 @@ function Navbar() {
                         <li key={index} className={index !== navItems.length - 1 ? "border-b border-[#f3eee5]/10" : ""}>
                             <a 
                                 href={item.href} 
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleNavClick(item.href);
+                                }}
                                 className="block px-6 py-4 hover:bg-[#f3eee5]/10 transition-colors"
-                                onClick={() => setMobileMenuOpen(false)}
                             >
                                 {item.name}
                             </a>

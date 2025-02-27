@@ -3,60 +3,80 @@ import { FaQuoteLeft, FaStar } from 'react-icons/fa';
 
 const testimonials = [
   {
-    name: 'John Doe',
-    title: 'CEO, Example Company',
-    quote: 'This product has truly transformed our business. Highly recommend to everyone!',
-    image: './testimonials_img1.jpg',
+    name: 'Adv. Rajesh Sharma',
+    title: 'Senior Advocate, Supreme Court of India',
+    quote: 'Lawgic has significantly streamlined my legal research. AI-powered case law retrieval saves me hours of manual work.',
+    image: 'https://img.freepik.com/free-photo/portrait-young-indian-top-manager-t-shirt-tie-crossed-arms-smiling-white-isolated-wall_496169-1513.jpg',
     rating: 5
   },
   {
-    name: 'Jane Smith',
-    title: 'CTO, Another Company',
-    quote: 'Fantastic experience! The team was professional and the results were outstanding.',
-    image: './testimonials_img2.jpg',
+    name: 'Priya Mehta',
+    title: 'Legal Consultant, Corporate Law',
+    image: 'https://img.freepik.com/free-photo/indian-businessman-with-his-white-collar-around-his-neck-against-white-wall_496169-1508.jpg',
+    quote: 'The document summarization feature is a game changer! It helps me extract key legal insights in minutes.',
     rating: 5
   },
   {
-    name: 'Alice Johnson',
-    title: 'Marketing Head, Some Company',
-    quote: 'A game changer in our industry. The support and service were top notch.',
-    image: './testimonials_img3.jpg',
+    name: 'Adv. Anil Verma',
+    title: 'High Court Lawyer, Delhi',
+    quote: 'AI-based precedent identification is remarkably accurate and has improved my legal arguments immensely.',
+    image: 'https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg',
     rating: 4
   },
   {
-    name: 'Bob Brown',
-    title: 'COO, Yet Another Company',
-    quote: 'Incredible service and amazing results. Would highly recommend to anyone!',
-    image: './testimonials_img4.jpg',
+    name: 'Sneha Iyer',
+    title: 'In-House Counsel, Tech Startup',
+    quote: 'Legal analytics dashboards provide valuable insights into case trends and judicial decisions. Highly recommended!',
+    image: 'https://img.freepik.com/free-photo/indian-businessman-with-his-white-collar-around-his-neck-against-white-wall_496169-1508.jpg',
     rating: 5
   },
   {
-    name: 'Emma Wilson',
-    title: 'Director of Operations, Tech Solutions',
-    quote: 'The product exceeded all our expectations. The implementation was seamless and the results were immediate.',
-    image: './testimonials_img5.jpg',
+    name: 'Adv. Vikram Desai',
+    title: 'Criminal Defense Lawyer, Mumbai',
+    quote: 'The AI legal analysis tool is exceptionally precise, making case research and strategy planning far more efficient.',
+    image: 'https://img.freepik.com/free-photo/handsome-businessman-suit-glasses-cross-arms-chest-look_176420-21750.jpg',
     rating: 5
   },
   {
-    name: 'Michael Chen',
-    title: 'Lead Developer, Innovative Apps',
-    quote: 'As a developer, I appreciate the technical excellence and attention to detail. This solution saved us countless hours.',
-    image: './testimonials_img6.jpg',
+    name: 'Kunal Bhatia',
+    title: 'Law Student, National Law University',
+    quote: 'As a student, Lawgic has been an invaluable resource for understanding case law and legal precedents.',
+    image: 'https://img.freepik.com/free-photo/young-handsome-man-with-beard-isolated-keeping-arms-crossed-frontal-position_1368-132662.jpg',
     rating: 4
   }
 ];
 
+
 const Testimonial = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  
+  // Preload images
+  useEffect(() => {
+    const imagePromises = testimonials.map(testimonial => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = testimonial.image;
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+    });
+    
+    Promise.all(imagePromises)
+      .then(() => setImagesLoaded(true))
+      .catch(err => console.error("Failed to load some images", err));
+  }, []);
   
   // Auto-rotate testimonials
   useEffect(() => {
+    if (!imagesLoaded) return; // Only start rotation after images are loaded
+    
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 5000);
     
     return () => clearInterval(interval);
-  }, []);
+  }, [imagesLoaded]);
 
   // Get position relative to active index
   const getRelativePosition = (index) => {
@@ -153,7 +173,13 @@ const Testimonial = () => {
           </p>
         </div>
 
-        <div className="relative h-[400px] mx-auto max-w-6xl">
+        {!imagesLoaded && (
+          <div className="flex justify-center items-center h-[400px]">
+            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#251c1a]"></div>
+          </div>
+        )}
+
+        <div className={`relative h-[400px] mx-auto max-w-6xl ${!imagesLoaded ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'}`}>
           {testimonials.map((testimonial, index) => {
             const cardProps = getCardProps(index);
             
@@ -172,6 +198,10 @@ const Testimonial = () => {
                       className="w-20 h-20 rounded-full object-cover border-4 border-[#b19f84]"
                       src={testimonial.image}
                       alt={testimonial.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = 'https://via.placeholder.com/150?text=Profile';
+                      }}
                     />
                     <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-[#b19f84] rounded-full p-1">
                       <FaQuoteLeft className="text-sm text-white" />

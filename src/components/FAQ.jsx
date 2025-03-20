@@ -5,21 +5,24 @@ import { FaChevronDown } from "react-icons/fa";
 const FAQ = () => {
   const faqs =[
     {
-      "question": "What is Lawgic?",
-      "answer": "Lawgic is an AI-powered legal research platform designed to help users access past court judgments, understand legal precedents, and streamline case research. It offers AI-driven case matching, legal document summarization, and a user-driven discussion forum."
+      "question": "What is ThinkTank?",
+      "answer": "ThinkTank is a professional networking platform designed to connect professionals, facilitate career growth, and provide learning opportunities. It's a comprehensive platform where you can build your professional network, discover job opportunities, access learning resources, and connect with mentors."
     },
     {
-      "question": "How does Lawgic improve legal research?",
-      "answer": "Lawgic leverages AI and Natural Language Processing (NLP) to provide relevant case recommendations, summarize lengthy judgments, and categorize legal data efficiently, reducing research time and improving accessibility."
+      "question": "How can ThinkTank help my career?",
+      "answer": "ThinkTank offers multiple ways to advance your career: connect with industry experts and mentors, discover relevant job opportunities, access professional development courses, track your career progress, and build a strong professional network. Our platform uses smart algorithms to match you with relevant opportunities and connections."
     },
     {
-      "question": "Which courts and cases does Lawgic cover?",
-      "answer": "Lawgic focuses on Indian legal cases, including Supreme Court and High Court judgments. We continuously expand our database to ensure comprehensive legal research."
+      "question": "What industries does ThinkTank cover?",
+      "answer": "ThinkTank is a global platform that covers a wide range of industries including technology, finance, healthcare, education, marketing, and more. We continuously expand our network to ensure comprehensive professional coverage across various sectors."
     },
-    
     {
-      "question": "Is Lawgic free to use?",
-      "answer": "Lawgic offers a free basic version with essential search features. Advanced features like AI-driven insights, saved searches, and personalized recommendations may be available under premium plans."
+      "question": "Is ThinkTank free to use?",
+      "answer": "ThinkTank offers a free basic version with essential networking features. Premium features like advanced job matching, mentorship programs, and exclusive learning resources are available under subscription plans."
+    },
+    {
+      "question": "How does the mentorship program work?",
+      "answer": "Our mentorship program connects you with experienced professionals in your field. You can browse mentor profiles, request mentorship, and engage in one-on-one sessions. The program is designed to provide personalized guidance for your career development."
     }
   ];
   
@@ -41,7 +44,7 @@ const FAQ = () => {
         >
           <h2 className="text-4xl font-bold mb-4 text-[#251c1a]">Frequently Asked Questions</h2>
           <p className="text-[#251c1a]/70 max-w-2xl mx-auto">
-            Find answers to common questions about our legal AI platform and how it can revolutionize your legal research process.
+            Find answers to common questions about our professional networking platform and how it can help you advance your career.
           </p>
         </motion.div>
         

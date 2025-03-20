@@ -1,15 +1,15 @@
 import React from 'react';
-import { FaDatabase, FaRobot, FaSearch, FaUsers, FaGavel, FaClock } from 'react-icons/fa';
+import { FaUsers, FaBriefcase, FaGraduationCap, FaHandshake, FaGlobe, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import CountUp from 'react-countup';
 
 const About = () => {
   const stats = [
-    { icon: <FaDatabase className="text-3xl md:text-4xl text-[#251c1a]" />, value: 50000, label: "Cases Indexed", suffix: "" },
-    { icon: <FaSearch className="text-3xl md:text-4xl text-[#251c1a]" />, value: 2, label: "Avg. Search Time", suffix: "" },
-    { icon: <FaRobot className="text-3xl md:text-4xl text-[#251c1a]" />, value: 99, label: "Legal Document Analysis Accuracy", suffix: "" },
-    { icon: <FaUsers className="text-3xl md:text-4xl text-[#251c1a]" />, value: 15, label: "Active Legal Professionals", suffix: "" },
-    { icon: <FaGavel className="text-3xl md:text-4xl text-[#251c1a]" />, value: 200, label: "Jurisdictions Covered", suffix: "" },
+    { icon: <FaUsers className="text-3xl md:text-4xl text-[#251c1a]" />, value: 1000000, label: "Active Professionals", suffix: "" },
+    { icon: <FaBriefcase className="text-3xl md:text-4xl text-[#251c1a]" />, value: 50000, label: "Job Opportunities", suffix: "" },
+    { icon: <FaGraduationCap className="text-3xl md:text-4xl text-[#251c1a]" />, value: 1000, label: "Learning Resources", suffix: "" },
+    { icon: <FaHandshake className="text-3xl md:text-4xl text-[#251c1a]" />, value: 500000, label: "Professional Connections", suffix: "" },
+    { icon: <FaGlobe className="text-3xl md:text-4xl text-[#251c1a]" />, value: 150, label: "Countries", suffix: "" },
     { icon: <FaClock className="text-3xl md:text-4xl text-[#251c1a]" />, value: 24, label: "Support Availability", suffix: "" }
   ]
 
@@ -41,15 +41,6 @@ const About = () => {
       }
     }
   };
- //for mobile
-  const formatNumber = (value) => {
-    if (window.innerWidth < 640 && value >= 1000000) {
-      return (value / 1000000).toFixed(1) + 'M';
-    } else if (window.innerWidth < 640 && value >= 1000) {
-      return (value / 1000).toFixed(0) + 'K';
-    }
-    return value;
-  };
 
   return (
     <section className="bg-[#f3eee5] text-[#251c1a] py-12 md:py-20 px-4 md:px-6">
@@ -61,7 +52,7 @@ const About = () => {
           transition={{ duration: 0.7 }}
           className="mb-10 md:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">Our Platform Statistics</h2>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">Our Global Professional Network</h2>
           <div className="w-24 md:w-32 h-1 md:h-1.5 bg-[#251c1a]/50 mx-auto mb-4 md:mb-6"></div>
         </motion.div>
 

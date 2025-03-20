@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaHome, FaInfoCircle, FaGavel, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaUsers, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -38,15 +38,14 @@ const Footer = () => {
             <div className="mb-6">
               <h2 className="text-2xl font-bold mb-4 flex items-center">
                 <div className="w-8 h-8 rounded-full bg-[#f3eee5] flex items-center justify-center mr-2">
-                  <FaGavel className="text-lg text-[#251c1a]" />
+                  <FaUsers className="text-lg text-[#251c1a]" />
                 </div>
-                Lawgic
+                ThinkTank
               </h2>
               <p className="text-[#f3eee5]/80 leading-relaxed">
-               Revolutionizing legal research with AI-powered case analysis,  
-              smart document summarization, and data-driven legal insights.
+                Empowering professionals to connect, grow, and succeed through 
+                meaningful networking and career development opportunities.
               </p>
-
             </div>
             <div className="flex space-x-4 mt-6">
               <a href="#" className="h-10 w-10 rounded-full bg-[#f3eee5]/10 flex items-center justify-center hover:bg-[#f3eee5]/20 transition-all duration-300">
@@ -86,9 +85,9 @@ const Footer = () => {
               <li>
                 <a href="#" className="flex items-center space-x-2 group">
                   <span className="h-8 w-8 rounded bg-[#f3eee5]/10 flex items-center justify-center group-hover:bg-[#f3eee5]/20 transition-all duration-300">
-                    <FaGavel className="text-[#f3eee5]" />
+                    <FaUsers className="text-[#f3eee5]" />
                   </span>
-                  <span className="group-hover:translate-x-1 transition-transform duration-300">Services</span>
+                  <span className="group-hover:translate-x-1 transition-transform duration-300">Network</span>
                 </a>
               </li>
               <li>
@@ -105,35 +104,34 @@ const Footer = () => {
           {/* Services */}
           <motion.div variants={itemVariants}>
             <h3 className="text-xl font-semibold mb-4 inline-block relative after:content-[''] after:block after:w-1/2 after:h-0.5 after:bg-[#f3eee5]/40 after:mt-1">
-              Our Services
+              Our Features
             </h3>
             <ul className="space-y-3">
-  <li className="flex items-center space-x-2">
-    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-    <span>AI-Powered Case Search</span>
-  </li>
-  <li className="flex items-center space-x-2">
-    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-    <span>Legal Precedent Analysis</span>
-  </li>
-  <li className="flex items-center space-x-2">
-    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-    <span>Smart Document Summarization</span>
-  </li>
-  <li className="flex items-center space-x-2">
-    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-    <span>Data-Driven Legal Insights</span>
-  </li>
-  <li className="flex items-center space-x-2">
-    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-    <span>Community & Expert Discussions</span>
-  </li>
-  <li className="flex items-center space-x-2">
-    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
-    <span>Multilingual Legal Research</span>
-  </li>
-</ul>
-
+              <li className="flex items-center space-x-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+                <span>Professional Networking</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+                <span>Career Opportunities</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+                <span>Learning Resources</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+                <span>Mentorship Programs</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+                <span>Global Community</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]"></span>
+                <span>Career Analytics</span>
+              </li>
+            </ul>
           </motion.div>
 
           {/* Contact Us */}
@@ -143,12 +141,12 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:support@lawgic.com" className="flex items-center space-x-3 group">
+                <a href="mailto:support@thinktank.com" className="flex items-center space-x-3 group">
                   <span className="h-10 w-10 rounded-full bg-[#f3eee5]/10 flex items-center justify-center group-hover:bg-[#f3eee5]/20 transition-all duration-300">
                     <FaEnvelope className="text-[#f3eee5]" />
                   </span>
                   <span className="text-[#f3eee5]/80 group-hover:text-[#f3eee5] transition-colors duration-300">
-                    support@lawgic.com
+                    support@thinktank.com
                   </span>
                 </a>
               </li>
@@ -168,7 +166,7 @@ const Footer = () => {
                     <FaMapMarkerAlt className="text-[#f3eee5]" />
                   </span>
                   <span className="text-[#f3eee5]/80">
-                  Chitkara University, Punjab 147001
+                    Chitkara University, Punjab 147001
                   </span>
                 </div>
               </li>
@@ -186,8 +184,8 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
             <div className="md:w-1/2">
-              <h3 className="text-xl font-semibold mb-2">Stay Updated with Lawgic</h3>
-              <p className="text-[#f3eee5]/70">Subscribe for the latest legal tech news and updates</p>
+              <h3 className="text-xl font-semibold mb-2">Stay Connected with ThinkTank</h3>
+              <p className="text-[#f3eee5]/70">Subscribe for career tips, networking events, and professional opportunities</p>
             </div>
             <div className="w-full md:w-1/2">
               <div className="flex flex-col sm:flex-row gap-3">
@@ -215,7 +213,7 @@ const Footer = () => {
               transition={{ delay: 0.5 }}
             >
               <p className="text-[#f3eee5]/70 text-sm">
-                &copy; {currentYear} Lawgic. All rights reserved.
+                &copy; {currentYear} ThinkTank. All rights reserved.
               </p>
             </motion.div>
             <motion.div 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaGavel, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import { FaUsers, FaSearch, FaBars, FaTimes, FaNetworkWired, FaUserCircle } from 'react-icons/fa';
 
 function Navbar() {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -22,9 +22,9 @@ function Navbar() {
     // Navigation items
     const navItems = [
         { name: 'Home', href: '#home' },
-        { name: 'About', href: '#about' },
-        { name: 'Services', href: '#services' },
-        { name: 'FAQ', href: '#faq' },
+        { name: 'Network', href: '#network' },
+        { name: 'Jobs', href: '#jobs' },
+        { name: 'Learning', href: '#learning' },
         { name: 'Contact', href: '#contact' }
     ];
 
@@ -58,12 +58,12 @@ function Navbar() {
                                 <div className={`w-10 h-10 rounded-full ${
                                     scrolled ? 'bg-[#f3eee5]' : 'bg-[#251c1a]'
                                 } flex items-center justify-center transition-colors duration-300`}>
-                                    <FaGavel className={`text-lg ${
+                                    <FaNetworkWired className={`text-lg ${
                                         scrolled ? 'text-[#251c1a]' : 'text-[#f3eee5]'
                                     } transition-colors duration-300`} />
                                 </div>
-                                {scrolled ? 'Lawgic' : (
-                                <span className="text-[#251c1a]">Lawgic</span>
+                                {scrolled ? 'ThinkTank' : (
+                                <span className="text-[#251c1a]">ThinkTank</span>
                                 )}
                             </div>
                         </span>
@@ -90,14 +90,24 @@ function Navbar() {
                         ))}
                     </ul>
 
-                    {/* Search and Mobile Menu Toggle */}
-                    <div className="flex items-center">
+                    {/* Search, Profile, and Mobile Menu Toggle */}
+                    <div className="flex items-center space-x-4">
                         {/* Search Button */}
-                        <button className={`p-2 rounded-full mr-2 ${
+                        <button className={`p-2 rounded-full ${
                             scrolled ? 'text-[#f3eee5] hover:bg-[#f3eee5]/10' : 'text-[#251c1a] hover:bg-[#251c1a]/10'
                         } transition-all duration-300`}>
                             <FaSearch className="text-lg" />
                         </button>
+
+                        {/* Profile Button */}
+                        <a 
+                            href="/profile" 
+                            className={`p-2 rounded-full ${
+                                scrolled ? 'text-[#f3eee5] hover:bg-[#f3eee5]/10' : 'text-[#251c1a] hover:bg-[#251c1a]/10'
+                            } transition-all duration-300`}
+                        >
+                            <FaUserCircle className="text-xl" />
+                        </a>
                         
                         {/* Mobile Menu Button */}
                         <button 
@@ -137,6 +147,15 @@ function Navbar() {
                             </a>
                         </li>
                     ))}
+                    <li className="border-t border-[#f3eee5]/10">
+                        <a 
+                            href="/profile" 
+                            className="block px-6 py-4 hover:bg-[#f3eee5]/10 transition-colors flex items-center"
+                        >
+                            <FaUserCircle className="mr-2" />
+                            Profile
+                        </a>
+                    </li>
                 </ul>
             </div>
         </header>

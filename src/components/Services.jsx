@@ -1,47 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaBalanceScale, FaSearch, FaFileAlt, FaChartLine, FaUserTie, FaRegLightbulb } from 'react-icons/fa';
+import { FaUsers, FaBriefcase, FaGraduationCap, FaHandshake, FaGlobe, FaChartLine } from 'react-icons/fa';
 
 const Services = () => {
   const services = [
   {
-    title: "AI-Powered Case Search",
-    description: "Find relevant Indian legal cases instantly with AI-driven search, smart categorization, and precise precedent matching.",
-    icon: <FaSearch className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["Indian Supreme & High Court cases", "Advanced filters", "AI-powered case matching"]
+    title: "Professional Networking",
+    description: "Connect with industry experts, mentors, and peers to expand your professional network and unlock new opportunities.",
+    icon: <FaUsers className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["Smart matching algorithm", "Industry-specific groups", "Professional recommendations"]
   },
   {
-    title: "Legal Precedent Analysis",
-    description: "Understand judicial trends with AI-driven insights into case outcomes, precedent impact, and legal argument strength.",
-    icon: <FaBalanceScale className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["Case outcome predictions", "Precedent impact analysis", "Jurisdictional insights"]
+    title: "Career Opportunities",
+    description: "Discover job opportunities, internships, and projects that match your skills and career aspirations.",
+    icon: <FaBriefcase className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["Job matching", "Skill-based recommendations", "Company insights"]
   },
   {
-    title: "Smart Document Summarization",
-    description: "Convert lengthy legal texts into structured, digestible summaries highlighting key arguments and relevant citations.",
-    icon: <FaFileAlt className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["AI-generated summaries", "Key argument extraction", "Linked case citations"]
+    title: "Learning & Development",
+    description: "Access professional courses, workshops, and resources to enhance your skills and stay competitive.",
+    icon: <FaGraduationCap className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["Online courses", "Skill assessments", "Learning paths"]
   },
   {
-    title: "Data-Driven Legal Insights",
-    description: "Analyze legal trends, judge decisions, and case success rates through interactive data visualization tools.",
+    title: "Professional Growth",
+    description: "Track your career progress, set goals, and get personalized recommendations for professional development.",
     icon: <FaChartLine className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["Judge ruling patterns", "Legal trend analysis", "Custom legal reports"]
+    features: ["Career analytics", "Skill tracking", "Progress insights"]
   },
   {
-    title: "Community & Expert Discussions",
-    description: "Engage in discussions with legal professionals, share case experiences, and gain insights from industry experts.",
-    icon: <FaUserTie className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["Legal Q&A forum", "Case discussions", "Expert consultations"]
+    title: "Global Community",
+    description: "Join a diverse community of professionals from around the world and expand your global network.",
+    icon: <FaGlobe className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["International networking", "Cultural exchange", "Global opportunities"]
   },
   {
-    title: "Multilingual Legal Research",
-    description: "Access legal resources in multiple Indian languages, breaking language barriers for better understanding.",
-    icon: <FaRegLightbulb className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["English, Hindi & regional languages", "Legal term translations", "Localized case insights"]
+    title: "Mentorship Programs",
+    description: "Connect with experienced professionals for guidance, mentorship, and career advice.",
+    icon: <FaHandshake className="text-4xl mb-4 text-[#f3eee5]/80" />,
+    features: ["Mentor matching", "Career guidance", "Professional advice"]
   }
 ];
-
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -84,12 +83,12 @@ const Services = () => {
           className="text-center mb-16"
         >
           <span className="bg-[#f3eee5]/10 text-[#f3eee5] px-4 py-1.5 rounded-full text-sm font-medium inline-block mb-5">
-            Our Expertise
+            Our Features
           </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Lawgic Services</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">ThinkTank Platform</h2>
           <p className="text-lg text-[#f3eee5]/80 max-w-3xl mx-auto leading-relaxed">
-            We combine cutting-edge AI technology with comprehensive legal databases to 
-            revolutionize how professionals access, analyze, and leverage legal information.
+            We provide a comprehensive platform for professional networking, career development, 
+            and continuous learning to help you achieve your career goals.
           </p>
         </motion.div>
 
@@ -160,10 +159,10 @@ const Services = () => {
             onClick={handleSearchNowClick}
             className="inline-block bg-[#f3eee5] text-[#251c1a] px-8 py-4 rounded-lg font-semibold hover:bg-[#f3eee5]/90 transition-colors duration-300"
           >
-            Search Now~
+            Join Now
           </button>
           <p className="text-[#f3eee5]/60 mt-4 text-sm">
-            See how our AI-powered platform can transform your legal research workflow
+            Start building your professional network and advancing your career today
           </p>
         </motion.div>
       </div>

@@ -10,6 +10,7 @@ import Testimonials from './components/Testimonials'
 import Profile from './components/Profile'
 import SignIn from './components/SignIn'
 import Contact from './components/Contact'
+import CreateProfile from './components/CreateProfile'
 import { motion, AnimatePresence } from 'framer-motion'
 
 // Main content component that uses useNavigate
@@ -29,8 +30,21 @@ function MainContent() {
 	const handleSignIn = (userData) => {
 		setUser(userData);
 		localStorage.setItem('user', JSON.stringify(userData));
+		
+		// Check if profile is completed
+		if (!userData.profileCompleted) {
+			navigate('/create-profile');
+		} else {
+			setShowWelcome(true);
+			navigate('/');
+			// Hide welcome message after 5 seconds
+			setTimeout(() => setShowWelcome(false), 5000);
+		}
+	};
+
+	const handleProfileComplete = (updatedUserData) => {
+		setUser(updatedUserData);
 		setShowWelcome(true);
-		navigate('/');
 		// Hide welcome message after 5 seconds
 		setTimeout(() => setShowWelcome(false), 5000);
 	};
@@ -83,8 +97,16 @@ function MainContent() {
 						<Footer />
 					</>
 				} />
-				<Route path="/profile" element={user ? <Profile user={user} /> : <SignIn onSignIn={handleSignIn} />} />
+				<Route path="/profile" element={user ? <Profile user={user} /> : <Navigate to="/signin" />} />
 				<Route path="/signin" element={<SignIn onSignIn={handleSignIn} />} />
+				<Route 
+					path="/create-profile" 
+					element={
+						user && !user.profileCompleted ? 
+						<CreateProfile userId={user.id} onProfileComplete={handleProfileComplete} /> : 
+						<Navigate to="/" />
+					} 
+				/>
 			</Routes>
 		</>
 	);

@@ -52,10 +52,11 @@ function SignIn({ onSignIn }) {
                     email: formData.email,
                     password: formData.password,
                     image: `https://ui-avatars.com/api/?name=${encodeURIComponent(formData.name)}&background=251c1a&color=fff`,
-                    headline: 'Member at Udyam',
+                    headline: 'New Member',
                     connections: [],
                     posts: [],
-                    joinedDate: new Date().toISOString()
+                    joinedDate: new Date().toISOString(),
+                    profileCompleted: false
                 };
 
                 // Save to localStorage
@@ -70,7 +71,8 @@ function SignIn({ onSignIn }) {
                     headline: newUser.headline,
                     connections: newUser.connections,
                     posts: newUser.posts,
-                    joinedDate: newUser.joinedDate
+                    joinedDate: newUser.joinedDate,
+                    profileCompleted: false
                 };
 
                 onSignIn(userData);
@@ -99,7 +101,8 @@ function SignIn({ onSignIn }) {
                     headline: user.headline,
                     connections: user.connections,
                     posts: user.posts,
-                    joinedDate: user.joinedDate
+                    joinedDate: user.joinedDate,
+                    profileCompleted: user.profileCompleted || false
                 };
 
                 onSignIn(userData);

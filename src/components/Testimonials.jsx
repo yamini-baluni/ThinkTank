@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { FaQuoteLeft, FaStar } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const testimonials = [
   {
-    name: 'Sarah Chen',
-    title: 'Software Engineer, Google',
-    quote: 'ThinkTank helped me connect with industry leaders and find my dream job. The mentorship program was invaluable for my career growth.',
-    image: 'https://img.freepik.com/free-photo/portrait-young-indian-top-manager-t-shirt-tie-crossed-arms-smiling-white-isolated-wall_496169-1513.jpg',
+    name: 'Sarah Johnson',
+    role: 'Software Engineer',
+    company: 'Tech Solutions Inc.',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    quote: 'Udyam helped me connect with industry leaders and find my dream job. The mentorship program was invaluable for my career growth.',
     rating: 5
   },
   {
-    name: 'Michael Rodriguez',
-    title: 'Marketing Director, Microsoft',
-    image: 'https://img.freepik.com/free-photo/indian-businessman-with-his-white-collar-around-his-neck-against-white-wall_496169-1508.jpg',
-    quote: 'The professional networking features are exceptional. I\'ve built meaningful connections that have opened up new opportunities.',
+    name: 'Michael Chen',
+    role: 'Marketing Director',
+    company: 'Global Brands Co.',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    quote: 'Udyam\'s global community exposed me to diverse perspectives and helped me expand my professional network internationally.',
+    rating: 5
+  },
+  {
+    name: 'Emily Rodriguez',
+    role: 'Startup Founder',
+    company: 'InnovateX',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
+    quote: 'Udyam helped me find talented professionals for my startup and build a strong professional network.',
     rating: 5
   },
   {
@@ -167,9 +178,14 @@ const Testimonial = () => {
         <div className="mb-12">
           <h2 className="text-4xl font-bold mb-4 text-[#251c1a]">Success Stories from Our Community</h2>
           <div className="h-1 w-24 bg-[#b19f84] mx-auto mb-5"></div>
-          <p className="text-[#251c1a]/70 max-w-2xl mx-auto">
-            Join thousands of professionals who have transformed their careers through ThinkTank's networking and development platform.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="text-[#251c1a]/70 text-lg max-w-2xl mx-auto"
+          >
+            Join thousands of professionals who have transformed their careers through Udyam's networking and development platform.
+          </motion.p>
         </div>
 
         {!imagesLoaded && (
@@ -222,7 +238,7 @@ const Testimonial = () => {
                 <div className="mt-auto">
                   <h3 className="text-xl font-bold">{testimonial.name}</h3>
                   <p className={`${cardProps.className.includes('card-active') ? 'text-[#e2dac9]' : 'text-[#251c1a]/70'}`}>
-                    {testimonial.title}
+                    {testimonial.role}, {testimonial.company}
                   </p>
                 </div>
               </div>

@@ -1,105 +1,168 @@
 import React from 'react';
-import { FaUsers, FaBriefcase, FaGraduationCap, FaHandshake, FaGlobe, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import CountUp from 'react-countup';
+import { FaUsers, FaBriefcase, FaGraduationCap, FaGlobe, FaHandshake, FaClock } from 'react-icons/fa';
 
-const About = () => {
+function About() {
   const stats = [
-    { icon: <FaUsers className="text-3xl md:text-4xl text-[#251c1a]" />, value: 1000000, label: "Active Professionals", suffix: "" },
-    { icon: <FaBriefcase className="text-3xl md:text-4xl text-[#251c1a]" />, value: 50000, label: "Job Opportunities", suffix: "" },
-    { icon: <FaGraduationCap className="text-3xl md:text-4xl text-[#251c1a]" />, value: 1000, label: "Learning Resources", suffix: "" },
-    { icon: <FaHandshake className="text-3xl md:text-4xl text-[#251c1a]" />, value: 500000, label: "Professional Connections", suffix: "" },
-    { icon: <FaGlobe className="text-3xl md:text-4xl text-[#251c1a]" />, value: 150, label: "Countries", suffix: "" },
-    { icon: <FaClock className="text-3xl md:text-4xl text-[#251c1a]" />, value: 24, label: "Support Availability", suffix: "" }
-  ]
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 }
-    }
-  };
-
-  const hoverVariants = {
-    hover: {
-      y: -5,
-      transition: {
-        duration: 0.3,
-        yoyo: 5
-      }
-    }
-  };
+    { icon: FaUsers, label: 'Active Professionals', value: '1,000,000+', color: 'from-blue-500 to-blue-600' },
+    { icon: FaBriefcase, label: 'Job Opportunities', value: '50,000+', color: 'from-green-500 to-green-600' },
+    { icon: FaGraduationCap, label: 'Learning Resources', value: '1,000+', color: 'from-purple-500 to-purple-600' },
+    { icon: FaHandshake, label: 'Professional Connections', value: '500,000+', color: 'from-orange-500 to-orange-600' },
+    { icon: FaGlobe, label: 'Countries', value: '150+', color: 'from-red-500 to-red-600' },
+    { icon: FaClock, label: 'Support Availability', value: '24/7', color: 'from-indigo-500 to-indigo-600' }
+  ];
 
   return (
-    <section className="bg-[#f3eee5] text-[#251c1a] py-12 md:py-20 px-4 md:px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mb-10 md:mb-16"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">Our Global Professional Network</h2>
-          <div className="w-24 md:w-32 h-1 md:h-1.5 bg-[#251c1a]/50 mx-auto mb-4 md:mb-6"></div>
-        </motion.div>
-
+    <section className="py-20 bg-[#f3eee5] relative overflow-hidden">
+      {/* Animated background patterns */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNMzYuMjUgMzUuMjVhMi4yNSAyLjI1IDAgMTAwLTQuNSAyLjI1IDIuMjUgMCAwMDAgNC41eiIgZmlsbD0iIzI1MWMxYSIgZmlsbC1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-10"></div>
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+          className="absolute inset-0 bg-gradient-to-br from-[#251c1a]/5 via-transparent to-[#3a2e2b]/5"
+          animate={{
+            opacity: [0.5, 0.8, 0.5],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
+
+      <div className="container mx-auto px-6 sm:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-bold text-[#251c1a] mb-6 relative"
+          >
+            Our Global Professional Network
+            <motion.div
+              className="absolute -inset-1 bg-gradient-to-r from-[#251c1a]/10 via-[#3a2e2b]/10 to-[#251c1a]/10 blur-xl"
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-[#251c1a]/70 text-lg max-w-2xl mx-auto"
+          >
+            Join a thriving community of professionals from around the world. 
+            Connect, collaborate, and grow together.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {stats.map((stat, index) => (
-            <motion.div 
-              key={index}
-              variants={itemVariants}
-              whileHover="hover"
-              className="bg-gradient-to-br from-[#251c1a]/10 to-transparent p-4 sm:p-6 md:p-8 rounded-2xl border border-[#251c1a]/10 text-center cursor-pointer relative transition-transform duration-300"
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              className="relative group"
             >
-              <motion.div variants={hoverVariants}>
-                <div className="flex justify-center mb-2 md:mb-4">
-                  {stat.icon}
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                {/* Animated gradient background */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                  animate={{
+                    backgroundPosition: ['0% 0%', '100% 100%'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+                
+                {/* Icon with gradient */}
+                <div className="relative mb-6">
+                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}>
+                    <stat.icon className="text-2xl text-white" />
+                  </div>
+                  <motion.div
+                    className="absolute -inset-1 bg-gradient-to-br opacity-20 blur-lg"
+                    animate={{
+                      opacity: [0.2, 0.4, 0.2],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
                 </div>
-                <div className="overflow-hidden">
-                  <h3 className="text-2xl sm:text-2xl md:text-3xl font-bold mb-1 md:mb-2">
-                    <CountUp 
-                      end={stat.value} 
-                      duration={2.5}
-                      formattingFn={(value) => {
-                        // Format large numbers for better mobile display
-                        if (value >= 1000000) {
-                          return (value / 1000000).toFixed(1) + 'M';
-                        } else if (value >= 1000) {
-                          return (value / 1000).toFixed(0) + 'K';
-                        }
-                        return value;
-                      }}
-                      suffix={stat.suffix}
-                    />
-                  </h3>
+
+                {/* Content */}
+                <div className="relative">
+                  <motion.div
+                    className="text-4xl font-bold text-[#251c1a] mb-2"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                  >
+                    {stat.value}
+                  </motion.div>
+                  <motion.div
+                    className="text-[#251c1a]/70 text-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  >
+                    {stat.label}
+                  </motion.div>
                 </div>
-                <p className="text-sm sm:text-md md:text-lg text-[#251c1a]/80">{stat.label}</p>
-              </motion.div>
+
+                {/* Decorative elements */}
+                <motion.div
+                  className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#251c1a]/5 to-transparent rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <motion.div
+                  className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#3a2e2b]/5 to-transparent rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2
+                  }}
+                />
+              </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-};
+}
 
 export default About;

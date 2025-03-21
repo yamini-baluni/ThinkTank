@@ -38,9 +38,15 @@ const Footer = () => {
             <div className="mb-6">
               <h2 className="text-2xl font-bold mb-4 flex items-center">
                 <div className="w-8 h-8 rounded-full bg-[#f3eee5] flex items-center justify-center mr-2">
-                  <FaUsers className="text-lg text-[#251c1a]" />
+                  <div className="flex items-center space-x-2">
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#251c1a] to-[#3a2e2b] flex items-center justify-center">
+                      <FaUsers className="text-white text-xl" />
+                    </div>
+                    <span className="text-2xl font-bold bg-gradient-to-r from-[#251c1a] to-[#3a2e2b] bg-clip-text text-transparent">
+                      Udyam
+                    </span>
+                  </div>
                 </div>
-                ThinkTank
               </h2>
               <p className="text-[#f3eee5]/80 leading-relaxed">
                 Empowering professionals to connect, grow, and succeed through 
@@ -141,12 +147,12 @@ const Footer = () => {
             </h3>
             <ul className="space-y-4">
               <li>
-                <a href="mailto:support@thinktank.com" className="flex items-center space-x-3 group">
+                <a href="mailto:support@udyam.com" className="flex items-center space-x-3 group">
                   <span className="h-10 w-10 rounded-full bg-[#f3eee5]/10 flex items-center justify-center group-hover:bg-[#f3eee5]/20 transition-all duration-300">
-                    <FaEnvelope className="text-[#f3eee5]" />
+                    <FaEnvelope className="text-[#251c1a]/70 group-hover:text-[#251c1a] transition-colors duration-300" />
                   </span>
-                  <span className="text-[#f3eee5]/80 group-hover:text-[#f3eee5] transition-colors duration-300">
-                    support@thinktank.com
+                  <span className="text-[#251c1a]/70 group-hover:text-[#251c1a] transition-colors duration-300">
+                    support@udyam.com
                   </span>
                 </a>
               </li>
@@ -184,7 +190,7 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row gap-6 items-center justify-between">
             <div className="md:w-1/2">
-              <h3 className="text-xl font-semibold mb-2">Stay Connected with ThinkTank</h3>
+              <h3 className="text-xl font-semibold mb-2">Stay Connected with Udyam</h3>
               <p className="text-[#f3eee5]/70">Subscribe for career tips, networking events, and professional opportunities</p>
             </div>
             <div className="w-full md:w-1/2">
@@ -213,7 +219,7 @@ const Footer = () => {
               transition={{ delay: 0.5 }}
             >
               <p className="text-[#f3eee5]/70 text-sm">
-                &copy; {currentYear} ThinkTank. All rights reserved.
+                &copy; {currentYear} Udyam. All rights reserved.
               </p>
             </motion.div>
             <motion.div 

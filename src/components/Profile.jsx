@@ -1,205 +1,173 @@
-import React, { useState } from 'react';
-import { FaUser, FaEnvelope, FaPhone, FaBriefcase, FaGraduationCap, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
+import React from 'react';
 import { motion } from 'framer-motion';
+import { FaUser, FaEnvelope, FaBriefcase, FaGraduationCap, FaUsers, FaCalendarAlt, FaEdit } from 'react-icons/fa';
 
-const Profile = () => {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    profession: '',
-    education: '',
-    location: '',
-    linkedin: '',
-    bio: '',
-    skills: '',
-    experience: ''
-  });
+function Profile({ user }) {
+    if (!user) {
+        return (
+            <section className="min-h-screen py-20 bg-[#f3eee5] relative overflow-hidden">
+                <div className="container mx-auto px-6 sm:px-8 relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center"
+                    >
+                        <h2 className="text-4xl font-bold text-[#251c1a] mb-4">Please Sign In</h2>
+                        <p className="text-[#251c1a]/70 mb-8">
+                            Sign in to view your personalized profile and dashboard.
+                        </p>
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => window.location.href = '#login'}
+                            className="bg-[#251c1a] text-white px-8 py-3 rounded-xl font-medium hover:bg-[#251c1a]/90 transition-colors duration-300"
+                        >
+                            Sign In Now
+                        </motion.button>
+                    </motion.div>
+                </div>
+            </section>
+        );
+    }
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log('Form submitted:', formData);
-  };
-
-  return (
-    <section className="min-h-screen bg-gradient-to-br from-[#f3eee5] via-[#e2dac9] to-[#f0ebdf] py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-4xl font-bold text-[#251c1a] mb-4">Create Your Professional Profile</h1>
-          <p className="text-[#251c1a]/70">Complete your profile to connect with professionals and unlock opportunities</p>
-        </motion.div>
-
-        <motion.form
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          onSubmit={handleSubmit}
-          className="bg-white rounded-2xl shadow-xl p-8"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Full Name */}
-            <div className="relative">
-              <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#251c1a]/40" />
-              <input
-                type="text"
-                name="fullName"
-                value={formData.fullName}
-                onChange={handleChange}
-                placeholder="Full Name"
-                className="w-full pl-12 pr-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-                required
-              />
+    return (
+        <section className="min-h-screen py-20 bg-[#f3eee5] relative overflow-hidden">
+            {/* Animated background patterns */}
+            <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNMzYuMjUgMzUuMjVhMi4yNSAyLjI1IDAgMTAwLTQuNSAyLjI1IDIuMjUgMCAwMDAgNC41eiIgZmlsbD0iIzI1MWMxYSIgZmlsbC1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-10"></div>
+                <motion.div 
+                    className="absolute inset-0 bg-gradient-to-br from-[#251c1a]/5 via-transparent to-[#3a2e2b]/5"
+                    animate={{
+                        opacity: [0.5, 0.8, 0.5],
+                        scale: [1, 1.1, 1],
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
             </div>
 
-            {/* Email */}
-            <div className="relative">
-              <FaEnvelope className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#251c1a]/40" />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email Address"
-                className="w-full pl-12 pr-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-                required
-              />
+            <div className="container mx-auto px-6 sm:px-8 relative z-10">
+                <div className="max-w-4xl mx-auto">
+                    {/* Profile Header */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="text-center mb-12"
+                    >
+                        <div className="relative inline-block mb-6">
+                            <div className="w-32 h-32 rounded-full bg-gradient-to-br from-[#251c1a] to-[#3a2e2b] flex items-center justify-center mx-auto">
+                                <FaUser className="text-6xl text-white" />
+                            </div>
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                className="absolute bottom-0 right-0 bg-white p-2 rounded-full shadow-lg"
+                            >
+                                <FaEdit className="text-[#251c1a]" />
+                            </motion.button>
+                        </div>
+                        <h2 className="text-4xl font-bold text-[#251c1a] mb-4">
+                            Welcome back, {user.name}!
+                        </h2>
+                        <p className="text-[#251c1a]/70">
+                            Manage your profile and track your professional journey
+                        </p>
+                    </motion.div>
+
+                    {/* Profile Content */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Personal Information */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="bg-white rounded-2xl shadow-xl p-8"
+                        >
+                            <h3 className="text-2xl font-bold text-[#251c1a] mb-6">Personal Information</h3>
+                            <div className="space-y-4">
+                                <div className="flex items-center space-x-4">
+                                    <div className="w-12 h-12 rounded-xl bg-[#251c1a]/10 flex items-center justify-center">
+                                        <FaUser className="text-[#251c1a]" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-[#251c1a]/60">Full Name</p>
+                                        <p className="font-medium text-[#251c1a]">{user.name}</p>
+                                    </div>
+                                </div>
+                                <div className="flex items-center space-x-4">
+                                    <div className="w-12 h-12 rounded-xl bg-[#251c1a]/10 flex items-center justify-center">
+                                        <FaEnvelope className="text-[#251c1a]" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-[#251c1a]/60">Email</p>
+                                        <p className="font-medium text-[#251c1a]">{user.email}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Professional Stats */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            className="bg-white rounded-2xl shadow-xl p-8"
+                        >
+                            <h3 className="text-2xl font-bold text-[#251c1a] mb-6">Professional Stats</h3>
+                            <div className="grid grid-cols-2 gap-6">
+                                <div className="text-center">
+                                    <div className="w-16 h-16 rounded-xl bg-[#251c1a]/10 flex items-center justify-center mx-auto mb-4">
+                                        <FaUsers className="text-2xl text-[#251c1a]" />
+                                    </div>
+                                    <p className="text-3xl font-bold text-[#251c1a] mb-1">0</p>
+                                    <p className="text-sm text-[#251c1a]/60">Connections</p>
+                                </div>
+                                <div className="text-center">
+                                    <div className="w-16 h-16 rounded-xl bg-[#251c1a]/10 flex items-center justify-center mx-auto mb-4">
+                                        <FaBriefcase className="text-2xl text-[#251c1a]" />
+                                    </div>
+                                    <p className="text-3xl font-bold text-[#251c1a] mb-1">0</p>
+                                    <p className="text-sm text-[#251c1a]/60">Jobs Applied</p>
+                                </div>
+                                <div className="text-center">
+                                    <div className="w-16 h-16 rounded-xl bg-[#251c1a]/10 flex items-center justify-center mx-auto mb-4">
+                                        <FaGraduationCap className="text-2xl text-[#251c1a]" />
+                                    </div>
+                                    <p className="text-3xl font-bold text-[#251c1a] mb-1">0</p>
+                                    <p className="text-sm text-[#251c1a]/60">Courses</p>
+                                </div>
+                                <div className="text-center">
+                                    <div className="w-16 h-16 rounded-xl bg-[#251c1a]/10 flex items-center justify-center mx-auto mb-4">
+                                        <FaCalendarAlt className="text-2xl text-[#251c1a]" />
+                                    </div>
+                                    <p className="text-3xl font-bold text-[#251c1a] mb-1">0</p>
+                                    <p className="text-sm text-[#251c1a]/60">Events</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Recent Activity */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="mt-8 bg-white rounded-2xl shadow-xl p-8"
+                    >
+                        <h3 className="text-2xl font-bold text-[#251c1a] mb-6">Recent Activity</h3>
+                        <div className="text-center py-8">
+                            <p className="text-[#251c1a]/60">No recent activity to show</p>
+                        </div>
+                    </motion.div>
+                </div>
             </div>
-
-            {/* Phone */}
-            <div className="relative">
-              <FaPhone className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#251c1a]/40" />
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                placeholder="Phone Number"
-                className="w-full pl-12 pr-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-              />
-            </div>
-
-            {/* Profession */}
-            <div className="relative">
-              <FaBriefcase className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#251c1a]/40" />
-              <input
-                type="text"
-                name="profession"
-                value={formData.profession}
-                onChange={handleChange}
-                placeholder="Current Profession"
-                className="w-full pl-12 pr-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-                required
-              />
-            </div>
-
-            {/* Education */}
-            <div className="relative">
-              <FaGraduationCap className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#251c1a]/40" />
-              <input
-                type="text"
-                name="education"
-                value={formData.education}
-                onChange={handleChange}
-                placeholder="Education"
-                className="w-full pl-12 pr-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-                required
-              />
-            </div>
-
-            {/* Location */}
-            <div className="relative">
-              <FaMapMarkerAlt className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#251c1a]/40" />
-              <input
-                type="text"
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
-                placeholder="Location"
-                className="w-full pl-12 pr-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-                required
-              />
-            </div>
-
-            {/* LinkedIn */}
-            <div className="relative">
-              <FaLinkedin className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#251c1a]/40" />
-              <input
-                type="url"
-                name="linkedin"
-                value={formData.linkedin}
-                onChange={handleChange}
-                placeholder="LinkedIn Profile URL"
-                className="w-full pl-12 pr-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-              />
-            </div>
-          </div>
-
-          {/* Bio */}
-          <div className="mt-6">
-            <textarea
-              name="bio"
-              value={formData.bio}
-              onChange={handleChange}
-              placeholder="Professional Bio"
-              rows="4"
-              className="w-full px-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-              required
-            />
-          </div>
-
-          {/* Skills */}
-          <div className="mt-6">
-            <textarea
-              name="skills"
-              value={formData.skills}
-              onChange={handleChange}
-              placeholder="Skills (comma-separated)"
-              rows="2"
-              className="w-full px-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-              required
-            />
-          </div>
-
-          {/* Experience */}
-          <div className="mt-6">
-            <textarea
-              name="experience"
-              value={formData.experience}
-              onChange={handleChange}
-              placeholder="Work Experience"
-              rows="4"
-              className="w-full px-4 py-3 border border-[#251c1a]/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#251c1a]/30"
-              required
-            />
-          </div>
-
-          {/* Submit Button */}
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            type="submit"
-            className="w-full mt-8 bg-[#251c1a] text-[#f3eee5] py-4 rounded-lg font-semibold hover:bg-[#251c1a]/90 transition-colors duration-300"
-          >
-            Create Profile
-          </motion.button>
-        </motion.form>
-      </div>
-    </section>
-  );
-};
+        </section>
+    );
+}
 
 export default Profile; 

@@ -1,173 +1,249 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaUsers, FaBriefcase, FaGraduationCap, FaHandshake, FaGlobe, FaChartLine } from 'react-icons/fa';
+import { FaUsers, FaBriefcase, FaGraduationCap, FaChartLine, FaGlobe, FaHandshake } from 'react-icons/fa';
 
-const Services = () => {
+function Services() {
   const services = [
-  {
-    title: "Professional Networking",
-    description: "Connect with industry experts, mentors, and peers to expand your professional network and unlock new opportunities.",
-    icon: <FaUsers className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["Smart matching algorithm", "Industry-specific groups", "Professional recommendations"]
-  },
-  {
-    title: "Career Opportunities",
-    description: "Discover job opportunities, internships, and projects that match your skills and career aspirations.",
-    icon: <FaBriefcase className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["Job matching", "Skill-based recommendations", "Company insights"]
-  },
-  {
-    title: "Learning & Development",
-    description: "Access professional courses, workshops, and resources to enhance your skills and stay competitive.",
-    icon: <FaGraduationCap className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["Online courses", "Skill assessments", "Learning paths"]
-  },
-  {
-    title: "Professional Growth",
-    description: "Track your career progress, set goals, and get personalized recommendations for professional development.",
-    icon: <FaChartLine className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["Career analytics", "Skill tracking", "Progress insights"]
-  },
-  {
-    title: "Global Community",
-    description: "Join a diverse community of professionals from around the world and expand your global network.",
-    icon: <FaGlobe className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["International networking", "Cultural exchange", "Global opportunities"]
-  },
-  {
-    title: "Mentorship Programs",
-    description: "Connect with experienced professionals for guidance, mentorship, and career advice.",
-    icon: <FaHandshake className="text-4xl mb-4 text-[#f3eee5]/80" />,
-    features: ["Mentor matching", "Career guidance", "Professional advice"]
-  }
-];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+    {
+      icon: FaUsers,
+      title: 'Professional Networking',
+      description: 'Connect with industry experts and peers. Build meaningful relationships and expand your professional network.',
+      color: 'from-blue-500 to-blue-600',
+      features: ['Industry-specific groups', 'Expert connections', 'Peer networking']
+    },
+    {
+      icon: FaBriefcase,
+      title: 'Career Opportunities',
+      description: 'Discover job opportunities and internships. Get matched with roles that align with your skills and aspirations.',
+      color: 'from-green-500 to-green-600',
+      features: ['Job matching', 'Career guidance', 'Industry insights']
+    },
+    {
+      icon: FaGraduationCap,
+      title: 'Learning & Development',
+      description: 'Access professional courses and resources. Stay ahead with continuous learning and skill development.',
+      color: 'from-purple-500 to-purple-600',
+      features: ['Online courses', 'Skill assessments', 'Learning paths']
+    },
+    {
+      icon: FaChartLine,
+      title: 'Professional Growth',
+      description: 'Track your career progress and set goals. Get insights and recommendations for career advancement.',
+      color: 'from-orange-500 to-orange-600',
+      features: ['Progress tracking', 'Goal setting', 'Performance analytics']
+    },
+    {
+      icon: FaGlobe,
+      title: 'Global Community',
+      description: 'Join a diverse community of professionals from around the world. Share experiences and learn from others.',
+      color: 'from-red-500 to-red-600',
+      features: ['Global networking', 'Cultural exchange', 'International opportunities']
+    },
+    {
+      icon: FaHandshake,
+      title: 'Mentorship Programs',
+      description: 'Connect with experienced professionals for guidance. Get personalized advice for your career journey.',
+      color: 'from-indigo-500 to-indigo-600',
+      features: ['Mentor matching', 'Career guidance', 'Skill development']
     }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.6 }
-    }
-  };
-
-  const handleSearchNowClick = () => {
-    const heroSection = document.querySelector('#home');
-    if (heroSection) {
-      heroSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  ];
 
   return (
-    <section className="bg-[#251c1a] text-[#f3eee5] py-20 px-6 relative overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-[#f3eee5]/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#f3eee5]/5 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl"></div>
-      
-      <div className="max-w-6xl mx-auto relative z-10">
+    <section className="py-20 bg-white relative overflow-hidden">
+      {/* Animated background patterns */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDBoNjB2NjBIMHoiLz48cGF0aCBkPSJNMzYuMjUgMzUuMjVhMi4yNSAyLjI1IDAgMTAwLTQuNSAyLjI1IDIuMjUgMCAwMDAgNC41eiIgZmlsbD0iIzI1MWMxYSIgZmlsbC1vcGFjaXR5PSIuMDUiLz48L2c+PC9zdmc+')] opacity-5"></div>
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16"
-        >
-          <span className="bg-[#f3eee5]/10 text-[#f3eee5] px-4 py-1.5 rounded-full text-sm font-medium inline-block mb-5">
-            Our Features
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">ThinkTank Platform</h2>
-          <p className="text-lg text-[#f3eee5]/80 max-w-3xl mx-auto leading-relaxed">
-            We provide a comprehensive platform for professional networking, career development, 
-            and continuous learning to help you achieve your career goals.
-          </p>
-        </motion.div>
+          className="absolute inset-0 bg-gradient-to-br from-[#251c1a]/5 via-transparent to-[#3a2e2b]/5"
+          animate={{
+            opacity: [0.5, 0.8, 0.5],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
 
-        <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+      <div className="container mx-auto px-6 sm:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl font-bold text-[#251c1a] mb-6 relative"
+          >
+            Our Features
+            <motion.div
+              className="absolute -inset-1 bg-gradient-to-r from-[#251c1a]/10 via-[#3a2e2b]/10 to-[#251c1a]/10 blur-xl"
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-[#251c1a]/70 text-lg max-w-2xl mx-auto"
+          >
+            Comprehensive platform for professional networking and career advancement.
+            Connect, learn, and grow with our suite of powerful features.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
-              key={index}
-              variants={itemVariants}
-              className="bg-gradient-to-br from-[#f3eee5]/10 to-transparent backdrop-blur-sm p-8 rounded-2xl border border-[#f3eee5]/10 group hover:border-[#f3eee5]/30 transition-all duration-300"
-              whileHover={{ 
-                y: -8, 
-                boxShadow: '0 20px 30px -10px rgba(0,0,0,0.2)',
-                transition: { duration: 0.3 }
-              }}
+              key={service.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              whileHover={{ scale: 1.02 }}
+              className="relative group"
             >
-              <div className="h-16 w-16 rounded-2xl bg-[#f3eee5]/10 flex items-center justify-center mb-6 group-hover:bg-[#f3eee5]/20 transition-colors duration-300">
-                {service.icon}
-              </div>
-              <h3 className="text-2xl font-semibold mb-4 group-hover:text-[#f3eee5] transition-colors">
-                {service.title}
-              </h3>
-              <p className="text-[#f3eee5]/70 mb-6 leading-relaxed">
-                {service.description}
-              </p>
-              <ul className="space-y-2">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-sm text-[#f3eee5]/60">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#f3eee5]/40 mr-2"></span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8 pt-6 border-t border-[#f3eee5]/10">
-                <a 
-                  href="#" 
-                  className="inline-flex items-center text-[#f3eee5] font-medium group-hover:text-[#f3eee5]/80"
-                >
-                  Learn more
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
+              <div className="bg-[#f3eee5] rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden">
+                {/* Animated gradient background */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300"
+                  animate={{
+                    backgroundPosition: ['0% 0%', '100% 100%'],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+                
+                {/* Icon with gradient */}
+                <div className="relative mb-6">
+                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg`}>
+                    <service.icon className="text-2xl text-white" />
+                  </div>
+                  <motion.div
+                    className="absolute -inset-1 bg-gradient-to-br opacity-20 blur-lg"
+                    animate={{
+                      opacity: [0.2, 0.4, 0.2],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="relative">
+                  <motion.h3 
+                    className="text-2xl font-bold text-[#251c1a] mb-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
+                    {service.title}
+                  </motion.h3>
+                  <motion.p 
+                    className="text-[#251c1a]/70 mb-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  >
+                    {service.description}
+                  </motion.p>
+                  
+                  {/* Features list */}
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <motion.li
+                        key={idx}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
+                        className="flex items-center text-[#251c1a]/80"
+                      >
+                        <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[#251c1a] to-[#3a2e2b] mr-2"></span>
+                        {feature}
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Decorative elements */}
+                <motion.div
+                  className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#251c1a]/5 to-transparent rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <motion.div
+                  className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-[#3a2e2b]/5 to-transparent rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2
+                  }}
+                />
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div 
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.7 }}
-          className="mt-16 text-center"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-center mt-16"
         >
-          <button 
-            onClick={handleSearchNowClick}
-            className="inline-block bg-[#f3eee5] text-[#251c1a] px-8 py-4 rounded-lg font-semibold hover:bg-[#f3eee5]/90 transition-colors duration-300"
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gradient-to-r from-[#251c1a] to-[#3a2e2b] text-white px-8 py-4 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
           >
-            Join Now
-          </button>
-          <p className="text-[#f3eee5]/60 mt-4 text-sm">
-            Start building your professional network and advancing your career today
-          </p>
+            <span className="relative z-10">Join Now</span>
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-[#3a2e2b] to-[#251c1a] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              animate={{
+                backgroundPosition: ['0% 0%', '100% 100%'],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            />
+          </motion.button>
         </motion.div>
       </div>
     </section>
   );
-};
+}
 
 export default Services;

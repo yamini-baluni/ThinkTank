@@ -1,164 +1,145 @@
 import React, { useState, useEffect } from 'react';
-import { FaUsers, FaSearch, FaBars, FaTimes, FaNetworkWired, FaUserCircle } from 'react-icons/fa';
+import { FaBars, FaTimes, FaUser, FaUsers, FaNetworkWired, FaGraduationCap, FaSignOutAlt } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-function Navbar() {
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+function Navbar({ user, onSignOut }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    // Handle scroll effect with more granular control
     useEffect(() => {
         const handleScroll = () => {
-            setScrollPosition(window.scrollY);
+            setScrolled(window.scrollY > 20);
         };
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Calculate opacity based on scroll position
-    const scrolled = scrollPosition > 20;
-    const gradientOpacity = Math.min(scrollPosition / 300, 0.75);
+    const handleNavigation = (path) => {
+        if (path.startsWith('/#')) {
+            // Handle hash-based scrolling
+            const sectionId = path.substring(2); // Remove '/#' from the path
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        } else {
+            // Handle regular routing
+            navigate(path);
+        }
+        setIsOpen(false);
+    };
 
-    // Navigation items
     const navItems = [
-        { name: 'Home', href: '#home' },
-        { name: 'Network', href: '#network' },
-        { name: 'Jobs', href: '#jobs' },
-        { name: 'Learning', href: '#learning' },
-        { name: 'Contact', href: '#contact' }
+        { name: 'Home', icon: null, path: '/' },
+        { name: 'Services', icon: null, path: '/#services' },
+        { name: 'About', icon: null, path: '/#about' },
+        { name: 'Testimonials', icon: null, path: '/#testimonials' },
+        { name: 'FAQ', icon: null, path: '/#faq' },
+        { name: 'Contact', icon: null, path: '/#contact' },
+        ...(user ? [
+            { name: user.name, icon: <FaUser />, path: '/profile' },
+            { name: 'Sign Out', icon: <FaSignOutAlt />, onClick: onSignOut }
+        ] : [
+            { name: 'Sign In', icon: <FaUser />, path: '/signin' }
+        ])
     ];
 
-    const handleNavClick = (href) => {
-        const element = document.querySelector(href);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-            setMobileMenuOpen(false);
+    const isActive = (path) => {
+        if (path.startsWith('/#')) {
+            // For hash links, check if we're on the home page
+            return location.pathname === '/' && window.location.hash === path.substring(2);
         }
+        return location.pathname === path;
     };
 
     return (
-        <header 
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-                scrolled ? 'py-3' : 'py-5'
+        <motion.nav
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            className={`fixed w-full z-50 transition-all duration-300 ${
+                scrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
             }`}
-            style={{
-                background: scrolled 
-                    ? `linear-gradient(to right, rgba(37, 28, 26, ${gradientOpacity}), rgba(58, 45, 42, ${gradientOpacity}))`
-                    : 'transparent',
-                backdropFilter: scrolled ? 'blur(20px)' : 'none',
-                boxShadow: scrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.05)' : 'none'
-            }}
         >
-            <div className="container mx-auto px-6 md:px-12">
-                <nav className="flex items-center justify-between">
+            <div className="container mx-auto px-6 sm:px-8">
+                <div className="flex items-center justify-between h-20">
                     {/* Logo */}
-                    <div className="flex items-center">
-                        <span className="text-2xl font-bold transition-colors text-[#f3eee5]">
-                            <div className="flex items-center gap-2">
-                                <div className={`w-10 h-10 rounded-full ${
-                                    scrolled ? 'bg-[#f3eee5]' : 'bg-[#251c1a]'
-                                } flex items-center justify-center transition-colors duration-300`}>
-                                    <FaNetworkWired className={`text-lg ${
-                                        scrolled ? 'text-[#251c1a]' : 'text-[#f3eee5]'
-                                    } transition-colors duration-300`} />
-                                </div>
-                                {scrolled ? 'ThinkTank' : (
-                                <span className="text-[#251c1a]">ThinkTank</span>
-                                )}
-                            </div>
+                    <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="flex items-center space-x-2 cursor-pointer"
+                        onClick={() => handleNavigation('/')}
+                    >
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#251c1a] to-[#3a2e2b] flex items-center justify-center">
+                            <FaUsers className="text-white text-xl" />
+                        </div>
+                        <span className="text-2xl font-bold bg-gradient-to-r from-[#251c1a] to-[#3a2e2b] bg-clip-text text-transparent">
+                            Udyam
                         </span>
-                    </div>
+                    </motion.div>
 
                     {/* Desktop Navigation */}
-                    <ul className="hidden md:flex items-center space-x-6 text-base font-medium transition-colors duration-300">
+                    <div className="hidden md:flex items-center space-x-8">
                         {navItems.map((item, index) => (
-                            <li key={index} className="hover:opacity-70 transition-opacity relative group">
-                                <a 
-                                    href={item.href} 
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handleNavClick(item.href);
-                                    }}
-                                    className={`py-2 ${scrolled ? 'text-[#f3eee5]' : 'text-[#251c1a]'} transition-colors duration-300`}
-                                >
-                                    {item.name}
-                                </a>
-                                <div className={`absolute w-full h-0.5 ${
-                                    scrolled ? 'bg-[#f3eee5]/70' : 'bg-[#251c1a]/70'
-                                } scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300`}></div>
-                            </li>
-                        ))}
-                    </ul>
-
-                    {/* Search, Profile, and Mobile Menu Toggle */}
-                    <div className="flex items-center space-x-4">
-                        {/* Search Button */}
-                        <button className={`p-2 rounded-full ${
-                            scrolled ? 'text-[#f3eee5] hover:bg-[#f3eee5]/10' : 'text-[#251c1a] hover:bg-[#251c1a]/10'
-                        } transition-all duration-300`}>
-                            <FaSearch className="text-lg" />
-                        </button>
-
-                        {/* Profile Button */}
-                        <a 
-                            href="/profile" 
-                            className={`p-2 rounded-full ${
-                                scrolled ? 'text-[#f3eee5] hover:bg-[#f3eee5]/10' : 'text-[#251c1a] hover:bg-[#251c1a]/10'
-                            } transition-all duration-300`}
-                        >
-                            <FaUserCircle className="text-xl" />
-                        </a>
-                        
-                        {/* Mobile Menu Button */}
-                        <button 
-                            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                            className={`md:hidden p-2 rounded-full ${
-                                scrolled ? 'text-[#f3eee5] hover:bg-[#f3eee5]/10' : 'text-[#251c1a] hover:bg-[#251c1a]/10'
-                            } transition-all duration-300`}
-                        >
-                            {mobileMenuOpen ? <FaTimes /> : <FaBars />}
-                        </button>
-                    </div>
-                </nav>
-            </div>
-
-            {/* Mobile Menu */}
-            <div 
-                className={`md:hidden transition-all duration-300 overflow-hidden ${
-                    mobileMenuOpen ? 'max-h-80' : 'max-h-0'
-                }`}
-                style={{
-                    background: `linear-gradient(to right, rgba(37, 28, 26, 0.85), rgba(58, 45, 42, 0.85))`,
-                    backdropFilter: 'blur(8px)'
-                }}
-            >
-                <ul className="flex flex-col text-[#f3eee5] font-medium">
-                    {navItems.map((item, index) => (
-                        <li key={index} className={index !== navItems.length - 1 ? "border-b border-[#f3eee5]/10" : ""}>
-                            <a 
-                                href={item.href} 
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    handleNavClick(item.href);
-                                }}
-                                className="block px-6 py-4 hover:bg-[#f3eee5]/10 transition-colors"
+                            <motion.button
+                                key={item.name}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                                onClick={item.onClick || (() => handleNavigation(item.path))}
+                                className={`flex items-center space-x-2 transition-colors duration-300 ${
+                                    isActive(item.path) ? 'text-[#251c1a]' : 'text-[#251c1a]/70 hover:text-[#251c1a]'
+                                }`}
                             >
-                                {item.name}
-                            </a>
-                        </li>
-                    ))}
-                    <li className="border-t border-[#f3eee5]/10">
-                        <a 
-                            href="/profile" 
-                            className="block px-6 py-4 hover:bg-[#f3eee5]/10 transition-colors flex items-center"
+                                {item.icon}
+                                <span>{item.name}</span>
+                            </motion.button>
+                        ))}
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <motion.button
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden text-[#251c1a]"
+                    >
+                        {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                    </motion.button>
+                </div>
+
+                {/* Mobile Menu */}
+                <AnimatePresence>
+                    {isOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="md:hidden overflow-hidden"
                         >
-                            <FaUserCircle className="mr-2" />
-                            Profile
-                        </a>
-                    </li>
-                </ul>
+                            <div className="py-4 space-y-4">
+                                {navItems.map((item, index) => (
+                                    <motion.button
+                                        key={item.name}
+                                        initial={{ opacity: 0, x: -20 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.1 }}
+                                        onClick={item.onClick || (() => handleNavigation(item.path))}
+                                        className={`flex items-center space-x-3 w-full transition-colors duration-300 ${
+                                            isActive(item.path) ? 'text-[#251c1a]' : 'text-[#251c1a]/70 hover:text-[#251c1a]'
+                                        }`}
+                                    >
+                                        {item.icon}
+                                        <span>{item.name}</span>
+                                    </motion.button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
-        </header>
+        </motion.nav>
     );
 }
 
